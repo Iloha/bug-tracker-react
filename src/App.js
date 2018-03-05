@@ -7,11 +7,19 @@ import Content from './layout/content';
 
 class App extends Component {
   render() {
+
+      const sn = 'React16'
+
     return (
       <div >
-          <Header/>
-          <Content/>
-          <Footer/>
+          <Header
+            siteName = {sn}
+            lang = "EN"
+          />
+          <Content
+
+          />
+          <Footer name = {sn}/>
       </div>
     );
   }

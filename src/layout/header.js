@@ -6,6 +6,8 @@ class Header extends Component {
     return (
       <div className="header">
           Шапка проекта
+          {this.props.siteName}
+          Меню
       </div>
     );
   }
