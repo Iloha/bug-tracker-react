@@ -7,7 +7,14 @@ class Header extends Component {
       <div className="header">
           Шапка проекта
           {this.props.siteName}
-          Меню
+          <span className="header__logo">Логотип</span>
+          <menu className="nav">
+              <ul className="nav__list">
+                  <li className="nav-item">Список багов</li>
+                  <li className="nav-item">Личный кабинет</li>
+              </ul>
+
+          </menu>
       </div>
     );
   }

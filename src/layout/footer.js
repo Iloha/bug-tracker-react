@@ -7,6 +7,8 @@ class Footer extends Component {
             <div className="footer">
                 {this.props.name}
                 Подвал
+                О проекте
+                Помощь
             </div>
         );
     }

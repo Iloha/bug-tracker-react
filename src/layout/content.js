@@ -5,7 +5,8 @@ class Content extends Component {
     render() {
         return (
             <div className="content">
-                Контент
+                кнопка создать баг
+                список багов
             </div>
         );
     }
