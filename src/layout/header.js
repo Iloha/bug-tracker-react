@@ -5,15 +5,14 @@ class Header extends Component {
   render() {
     return (
       <div className="header">
-          Шапка проекта
-          {this.props.siteName}
-          <span className="header__logo">Логотип</span>
+          {this.props.siteName.map(el =>
+              <a href={el.link} key={el.link}>{el.name}</a>
+          )}
           <menu className="nav">
               <ul className="nav__list">
-                  <li className="nav-item">Список багов</li>
+                  <li className="nav-item">TODO_list</li>
                   <li className="nav-item">Личный кабинет</li>
               </ul>
-
           </menu>
       </div>
     );

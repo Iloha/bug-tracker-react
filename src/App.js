@@ -6,19 +6,63 @@ import Content from './layout/content';
 
 
 class App extends Component {
-  render() {
 
-      const sn = 'React16'
+   constructor(props) {
+       super(props);
+
+       this.state = {
+           open: false,
+           toDoList: [],
+           toDoInput: 'abc',
+       };
+   }
+   addToDo () {
+       console.log('click')
+       const toDoList = this.state.toDoList;
+       toDoList.push(this.state.toDoInput)
+       this.setState({
+        toDoList
+       })
+   }
+  render() {
+        console.log(this.state.toDoList)
+      const sn = 'React16';
+
+      const menu = [
+          {
+              link: 'http://facebook.com',
+              name: 'Facebook',
+          },
+          {
+              link: 'http://instagram.com',
+              name: 'Instagram',
+          },
+      ]
 
     return (
       <div >
-          <Header
-            siteName = {sn}
-            lang = "EN"
-          />
-          <Content
 
+          {this.state.name}
+          <Header
+            siteName = {menu}
+            lang = {this.state.open ? "Open" : "Closed"}
           />
+/          <button className="button" onClick={() => this.setState({open: !this.state.open, name: `$this.state.name + '.'`})}>Toggle open</button>
+          {
+              this.state.open ? <Content/> : 'No content'
+          }
+          <div className="todolist">
+              <input className="regular-input" type="text" value={this.state.toDoInput} onChange={e => this.setState({toDoInput: e.target.value})}/>
+              <button className="regular-button" onClick={() => this.addToDo()}>Add</button>
+              <ol className="regular-list">
+                  {
+                      this.state.toDoList.map( (el, i) => <li className="regular-list__item" key={i}>{el}</li>)
+
+                  }
+
+              </ol>
+          </div>
+
           <Footer name = {sn}/>
       </div>
     );
