@@ -47,24 +47,30 @@ class App extends Component {
             siteName = {menu}
             lang = {this.state.open ? "Open" : "Closed"}
           />
-/          <button className="button" onClick={() => this.setState({open: !this.state.open, name: `$this.state.name + '.'`})}>Toggle open</button>
-          {
-              this.state.open ? <Content/> : 'No content'
-          }
+          {/*<button className="button"*/}
+                   {/*onClick={() => this.setState({open: !this.state.open, name: `$this.state.name + '.'`})}>Toggle open</button>*/}
+          {/*{*/}
+              {/*this.state.open ? <Content/> : 'No content'*/}
+          {/*}*/}
           <div className="container">
               <div className="row">
-                  <div className="form-group">
-                      <input className="form-control" type="text" value={this.state.toDoInput} onChange={e => this.setState({toDoInput: e.target.value})}/>
+                  <div className="col-sm">
+                      <input className="form-control" type="text" value={this.state.toDoInput}
+                             onChange={e => this.setState({toDoInput: e.target.value})}/>
+                  </div>
+                  <div className="col-sm">
                       <button className="btn btn-info " onClick={() => this.addToDo()}>Add</button>
                   </div>
+              </div>
+              <div className="row">
+                  <div className="col-sm">
+                      <ol className="regular-list">
+                          {
+                              this.state.toDoList.map( (el, i) => <li className="regular-list__item" key={i}>{el}</li>)
 
-                  <ol className="regular-list">
-                      {
-                          this.state.toDoList.map( (el, i) => <li className="regular-list__item" key={i}>{el}</li>)
-
-                      }
-
-                  </ol>
+                          }
+                      </ol>
+                  </div>
               </div>
           </div>
 
