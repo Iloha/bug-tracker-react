@@ -14,6 +14,7 @@ class App extends Component {
            open: false,
            toDoList: [],
            toDoInput: 'abc',
+
        };
    }
    addToDo () {
@@ -21,7 +22,17 @@ class App extends Component {
        const toDoList = this.state.toDoList;
        toDoList.push(this.state.toDoInput)
        this.setState({
-        toDoList
+            toDoList,
+            toDoInput: '',
+           todoInputValid: false
+       })
+   }
+   inputChange (v) {
+       let todoInputValid = v.length >= 3;
+
+       this.setState({
+           toDoInput: v,
+           todoInputValid
        })
    }
   render() {
@@ -55,11 +66,13 @@ class App extends Component {
           <div className="container">
               <div className="row">
                   <div className="col-sm">
-                      <input className="form-control" type="text" value={this.state.toDoInput}
-                             onChange={e => this.setState({toDoInput: e.target.value})}/>
+                      <input  className="form-control" type="text" value={this.state.toDoInput}
+                             onChange={e => this.inputChange(e.target.value)}/>
                   </div>
                   <div className="col-sm">
-                      <button className="btn btn-info " onClick={() => this.addToDo()}>Add</button>
+                      <button className="btn btn-info "
+                              disabled={!this.state.todoInputValid}
+                              onClick={() => this.addToDo()}>Add</button>
                   </div>
               </div>
               <div className="row">
