@@ -51,16 +51,21 @@ class App extends Component {
           {
               this.state.open ? <Content/> : 'No content'
           }
-          <div className="todolist">
-              <input className="regular-input" type="text" value={this.state.toDoInput} onChange={e => this.setState({toDoInput: e.target.value})}/>
-              <button className="regular-button" onClick={() => this.addToDo()}>Add</button>
-              <ol className="regular-list">
-                  {
-                      this.state.toDoList.map( (el, i) => <li className="regular-list__item" key={i}>{el}</li>)
+          <div className="container">
+              <div className="row">
+                  <div className="form-group">
+                      <input className="form-control" type="text" value={this.state.toDoInput} onChange={e => this.setState({toDoInput: e.target.value})}/>
+                      <button className="btn btn-info " onClick={() => this.addToDo()}>Add</button>
+                  </div>
 
-                  }
+                  <ol className="regular-list">
+                      {
+                          this.state.toDoList.map( (el, i) => <li className="regular-list__item" key={i}>{el}</li>)
 
-              </ol>
+                      }
+
+                  </ol>
+              </div>
           </div>
 
           <Footer name = {sn}/>
