@@ -28,11 +28,18 @@ class App extends Component {
        })
    }
    inputChange (v) {
-       let todoInputValid = v.length >= 3;
+       let todoInputValid =  v.length >= 3 && v.indexOf('   ') !== 0;
+       console.log(todoInputValid);
 
        this.setState({
            toDoInput: v,
            todoInputValid
+       })
+   }
+   removeItem (i) {
+       this.state.toDoList.splice(i, 1);
+       this.setState({
+           toDoList: this.state.toDoList
        })
    }
   render() {
@@ -72,14 +79,23 @@ class App extends Component {
                   <div className="col-sm">
                       <button className="btn btn-info "
                               disabled={!this.state.todoInputValid}
+
                               onClick={() => this.addToDo()}>Add</button>
+                      { this.state.todoInputValid === false  ? (
+                          <div className="invalid-feedback"> невалидно</div>
+                      ) : ( ' '
+                      )}
+
+
                   </div>
               </div>
               <div className="row">
                   <div className="col-sm">
-                      <ol className="regular-list">
+                      <ol className="list-group mt-5">
                           {
-                              this.state.toDoList.map( (el, i) => <li className="regular-list__item" key={i}>{el}</li>)
+                              this.state.toDoList.map( (el, i) => <li className="list-group-item" key={i}><span>{el}</span>
+                                  <button className="btn btn-danger ml-4"
+                                          onClick={() => this.removeItem(i)}>удалить</button> </li>)
 
                           }
                       </ol>
